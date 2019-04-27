@@ -23,3 +23,7 @@ A simple app to generate barcodes with a checksum digit.
 2. When Serve is running, click on Open app or go to http://localhost:8080/
 3. The app is running in the browser, to simulate mobile devices, use "Device Toolbar" in Chrome devtools
 4. The app can also be reached through the network using http://192.168.1.28:8080/
+
+## Tests
+
+To test that the checksum value is calculcating correctly, run 'npm run test:unit'
