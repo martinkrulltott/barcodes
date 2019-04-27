@@ -1,5 +1,5 @@
 <template>
-  <div class="bar" :class="'bar-' + value">
+  <div class="bar" :class="'bar-' + value" :style="{ background: color }">
     {{value}}
   </div>
 </template>
@@ -7,7 +7,7 @@
 <script>
 export default {
   name: 'Bar',
-  props: ['value'],
+  props: ['value', 'color'],
 };
 </script>
 
@@ -42,7 +42,6 @@ $widthMultipliers: (
   display: flex;
   align-items: center;
   justify-content: center;
-  background: blue;
   color: white;
   padding: 15px 10px;
 }
