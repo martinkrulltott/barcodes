@@ -9,10 +9,10 @@
       <h2 class="section-title">Barcode</h2>
       <ul class="bars" v-if="barValues && barValues.length > 0">
         <li v-for="(value, index) in barValues" :key="index" class="bar-wrapper">
-          <bar :value="value" :color="primaryColor.hex" />
+          <bar :value="value" :backgroundColor="primaryColor.hex" />
         </li>
         <li class="bar-wrapper">
-          <bar :value="checkSumValue" :color="secondaryColor.hex" />
+          <bar :value="checkSumValue" :backgroundColor="secondaryColor.hex" :borderColor="primaryColor.hex" />
         </li>
       </ul>
     </div>
@@ -46,7 +46,7 @@ import Bar from '@/components/Bar.vue';
 import { Chrome } from 'vue-color';
 
 let primaryColor = { hex: '#194a94' };
-let secondaryColor = { hex: '#C6D7F1' };
+let secondaryColor = { hex: '#fff' };
 
 export default {
   name: 'home',
@@ -127,7 +127,6 @@ export default {
 
 .bar-wrapper {
   display: inline-block;
-  padding: 1px;
 }
 
 .button {
