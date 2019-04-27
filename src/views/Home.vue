@@ -5,7 +5,7 @@
     </div>
     <div class="barcode">
       <ul class="bars" v-if="barValues && barValues.length > 0">
-        <li v-for="value in barValues" class="bar-wrapper">
+        <li v-for="(value, index) in barValues" :key="index" class="bar-wrapper">
           <bar :value="value" :color="primaryColor.hex" />
         </li>
         <li class="bar-wrapper">
