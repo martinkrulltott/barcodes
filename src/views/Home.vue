@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="number-editor">
-      <input type="text" placeholder="Barcode number" v-model="barcodeNumber" maxlength="19" />
+      <input type="text" placeholder="Barcode number" :value="barcodeNumber" @keyup="changeBarcodeNumber($event)" maxlength="19"/>
     </div>
     <div class="barcode">
       <ul class="bars" v-if="barValues && barValues.length > 0">
@@ -35,7 +35,6 @@
 // TODO:
 // Prettier UI :)
 // Responsive for small devices
-// Only allow numbers in the barcode input
 
 import Bar from '@/components/Bar.vue';
 import { Chrome } from 'vue-color';
@@ -78,6 +77,17 @@ export default {
         result = remainderAfterDivision == 0 ? 0 : 10 - remainderAfterDivision;
       }
       return result;
+    },
+    // NOTE: If I would have used type="number" and v-model="barcodeNumber", this wouldn't be necessary.
+    // But since I wanted to restrict the input to numerics only while still maintaining max length 19
+    // I chose to implement a custom solution (however it doesn't work perfectly with e.g. the ` and ^ characters)
+    changeBarcodeNumber (event) {
+      if (isNaN(event.target.value) || event.key == ".") {
+        event.preventDefault();
+        event.target.value = event.target.value.slice(0, event.target.value.length - 1);
+      } else {
+        this.barcodeNumber = event.target.value;
+      }
     }
   }
 };
