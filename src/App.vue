@@ -1,19 +1,10 @@
 <template>
-  <div id="app">
+  <div id="app" class="container">
     <home />
   </div>
 </template>
 
 <script>
-
-// TODO:
-// Display hardcoded barcodes
-// Manually be able to enter barcode values and add new digits (max 19)
-// Display and edit primary and secondary colors
-// Calculate the checksum
-// Automated tests for the checksum
-// Responsive for small devices
-
 import Home from '@/views/Home.vue';
 
 export default {
@@ -25,4 +16,11 @@ export default {
 </script>
 
 <style lang="scss">
+body {
+  margin: 0;
+}
+
+.container {
+  padding: 20px;
+}
 </style>
