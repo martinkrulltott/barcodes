@@ -47,13 +47,13 @@ $widthMultipliers: (
 }
 
 @each $name, $value in $heightMultipliers {
-  .bar-#{$name}) {
+  .bar-#{$name} {
     height: 0px + ($value * 80) - 100;
   }
 }
 
 @each $name, $value in $widthMultipliers {
-  .bar-#{$name}) {
+  .bar-#{$name} {
     width: 0px + ($value * 20) - 10;
   }
 }

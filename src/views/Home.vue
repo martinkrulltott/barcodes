@@ -1,9 +1,12 @@
 <template>
   <div>
-    <div class="number-editor">
-      <input type="text" placeholder="Barcode number" :value="barcodeNumber" @keyup="changeBarcodeNumber($event)" maxlength="19"/>
+    <h1 class="page-title">Barcode editor</h1>
+    <div class="section">
+      <h2 class="section-title">Barcode number</h2>
+      <input type="text" placeholder="Enter number..." :value="barcodeNumber" @keyup="changeBarcodeNumber($event)" maxlength="19" class="barcode-number"/>
     </div>
-    <div class="barcode">
+    <div class="section">
+      <h2 class="section-title">Barcode</h2>
       <ul class="bars" v-if="barValues && barValues.length > 0">
         <li v-for="(value, index) in barValues" :key="index" class="bar-wrapper">
           <bar :value="value" :color="primaryColor.hex" />
@@ -13,19 +16,22 @@
         </li>
       </ul>
     </div>
-    <div class="primary-color-editor" v-if="!displaySecondaryColorEditor">
-      <button v-on:click="displayPrimaryColorEditor = !displayPrimaryColorEditor">
-        <span v-if="!displayPrimaryColorEditor">Change primary color</span>
-        <span v-else>Close</span>
-      </button>
-      <color-picker v-model="primaryColor" v-if="displayPrimaryColorEditor" />
-    </div>
-    <div class="secondary-color-editor" v-if="!displayPrimaryColorEditor">
-      <button v-on:click="displaySecondaryColorEditor = !displaySecondaryColorEditor">
-        <span v-if="!displaySecondaryColorEditor">Change secondary color</span>
-        <span v-else>Close</span>
-      </button>
-      <color-picker v-model="secondaryColor" v-if="displaySecondaryColorEditor" />
+    <div class="section">
+      <h2 class="section-title">Settings</h2>
+      <div class="primary-color-editor" v-if="!displaySecondaryColorEditor">
+        <button v-on:click="displayPrimaryColorEditor = !displayPrimaryColorEditor" class="button">
+          <span v-if="!displayPrimaryColorEditor">Change primary color</span>
+          <span v-else>X</span>
+        </button>
+        <color-picker v-model="primaryColor" v-if="displayPrimaryColorEditor" />
+      </div>
+      <div class="secondary-color-editor" v-if="!displayPrimaryColorEditor">
+        <button v-on:click="displaySecondaryColorEditor = !displaySecondaryColorEditor" class="button">
+          <span v-if="!displaySecondaryColorEditor">Change secondary color</span>
+          <span v-else>X</span>
+        </button>
+        <color-picker v-model="secondaryColor" v-if="displaySecondaryColorEditor" />
+      </div>
     </div>
   </div>
 </template>
@@ -94,13 +100,40 @@ export default {
 </script>
 
 <style lang="scss">
+.section {
+  margin: 30px 0;
+}
+
+.page-title {
+  font-size: 30px;
+}
+
+.section-title {
+  margin: 0 0 5px;
+  font-size: 15px;
+}
+
+.barcode-number {
+  border: 1px solid #000;
+  padding: 5px;
+}
+
 .bars {
-  display: flex;
+  display: inline-flex;
   align-items: center;
+  border: 1px solid;
+  padding: 10px;
 }
 
 .bar-wrapper {
   display: inline-block;
   padding: 1px;
+}
+
+.button {
+  border: 1px solid #000;
+  padding: 10px;
+  background: #fff;
+  margin: 5px;
 }
 </style>

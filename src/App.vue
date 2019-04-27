@@ -18,6 +18,8 @@ export default {
 <style lang="scss">
 body {
   margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f9f8ff;
 }
 
 ul {
