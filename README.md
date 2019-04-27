@@ -26,5 +26,5 @@ A simple app to generate barcodes with a checksum digit.
 
 ## Tests
 
-To test that the checksum value is calculcating correctly, run 'npm run test:unit'
-If the test fails for an unexpected reason, please run 'npx jest --clearCache', because of a Vue CLI bug
+* To test that the checksum value is calculcating correctly, run 'npm run test:unit'
+* If the test fails for an unexpected reason, please run 'npx jest --clearCache', because of a Vue CLI bug
