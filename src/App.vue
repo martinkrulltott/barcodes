@@ -20,23 +20,7 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
   background: #f9f8ff;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-button {
-  padding: 0;
-  border: 0;
-  background: none;
-  cursor: pointer;
-
-  &:focus {
-    outline: none;
-  }
+  color: #4d4d4d;
 }
 
 .container {

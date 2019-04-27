@@ -1,5 +1,5 @@
 <template>
-  <div class="bar" :class="'bar-' + value" :style="{ 'background': backgroundColor, 'border-color': borderColor, 'color': borderColor }">
+  <div class="bar" :class="'bar-' + value" :style="{ 'background': backgroundColor, 'border-color': borderColor, 'color': textColor }">
     {{value}}
   </div>
 </template>
@@ -7,7 +7,7 @@
 <script>
 export default {
   name: 'Bar',
-  props: ['value', 'backgroundColor', 'borderColor'],
+  props: ['value', 'backgroundColor', 'borderColor', 'textColor'],
 };
 </script>
 
@@ -42,25 +42,10 @@ $widthMultipliers: (
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
-  font-size: 0.1rem;
+  font-size: 10px;
   border-width: 1px;
   border-style: solid;
-
-  // Small devices (landscape phones, 576px and up)
-  @media (min-width: 576px) {
-    font-size: 0.6rem;
-  }
-
-  // Medium devices (tablets, 768px and up)
-  @media (min-width: 768px) {
-    font-size: 0.8rem;
-  }
-
-  // Large devices (desktops, 992px and up)
-  @media (min-width: 992px) {
-    font-size: 1rem;
-  }
+  margin: 0 1px;
 }
 
 @each $name, $value in $heightMultipliers {
@@ -71,7 +56,7 @@ $widthMultipliers: (
 
 @each $name, $value in $widthMultipliers {
   .bar-#{$name} {
-    width: 0em + ($value * 0.7);
+    flex-grow: $value;
   }
 }
 </style>

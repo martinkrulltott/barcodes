@@ -5,30 +5,26 @@
       <h2 class="section-title">Barcode number</h2>
       <input type="text" placeholder="Enter number..." :value="barcodeNumber" @keyup="changeBarcodeNumber($event)" maxlength="19" class="barcode-number"/>
     </div>
-    <div class="section">
+    <div class="section" v-if="barValues && barValues.length > 0">
       <h2 class="section-title">Barcode</h2>
-      <ul class="bars" v-if="barValues && barValues.length > 0">
-        <li v-for="(value, index) in barValues" :key="index" class="bar-wrapper">
-          <bar :value="value" :backgroundColor="primaryColor.hex" />
-        </li>
-        <li class="bar-wrapper">
-          <bar :value="checkSumValue" :backgroundColor="secondaryColor.hex" :borderColor="primaryColor.hex" />
-        </li>
-      </ul>
+      <div class="bars">
+        <bar v-for="(value, index) in barValues" :key="index" class="bar-wrapper" :value="value" :backgroundColor="primaryColor.hex" :borderColor="primaryColor.hex" :textColor="secondaryColor.hex" />
+        <bar :value="checkSumValue" :backgroundColor="secondaryColor.hex" :borderColor="primaryColor.hex" :textColor="primaryColor.hex" />
+      </div>
     </div>
-    <div class="section">
+    <div class="section" v-if="barValues && barValues.length > 0">
       <h2 class="section-title">Settings</h2>
       <div class="primary-color-editor" v-if="!displaySecondaryColorEditor">
         <button v-on:click="displayPrimaryColorEditor = !displayPrimaryColorEditor" class="button">
           <span v-if="!displayPrimaryColorEditor">Change primary color</span>
-          <span v-else>X</span>
+          <span v-else>Close</span>
         </button>
         <color-picker v-model="primaryColor" v-if="displayPrimaryColorEditor" />
       </div>
       <div class="secondary-color-editor" v-if="!displayPrimaryColorEditor">
         <button v-on:click="displaySecondaryColorEditor = !displaySecondaryColorEditor" class="button">
           <span v-if="!displaySecondaryColorEditor">Change secondary color</span>
-          <span v-else>X</span>
+          <span v-else>Close</span>
         </button>
         <color-picker v-model="secondaryColor" v-if="displaySecondaryColorEditor" />
       </div>
@@ -43,7 +39,7 @@
 // Responsive for small devices
 
 import Bar from '@/components/Bar.vue';
-import { Chrome } from 'vue-color';
+import { Compact } from 'vue-color';
 
 let primaryColor = { hex: '#194a94' };
 let secondaryColor = { hex: '#fff' };
@@ -52,7 +48,7 @@ export default {
   name: 'home',
   components: {
     'bar': Bar,
-    'color-picker': Chrome
+    'color-picker': Compact
   },
   data: () => {
     return {
@@ -100,12 +96,15 @@ export default {
 </script>
 
 <style lang="scss">
+$border-color: #4d4d4d;
+
 .section {
   margin: 30px 0;
 }
 
 .page-title {
   font-size: 30px;
+  margin: 10px 0;
 }
 
 .section-title {
@@ -114,25 +113,26 @@ export default {
 }
 
 .barcode-number {
-  border: 1px solid #000;
+  border: 1px solid $border-color;
   padding: 5px;
 }
 
 .bars {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   border: 1px solid;
   padding: 10px;
 }
 
-.bar-wrapper {
-  display: inline-block;
-}
-
 .button {
-  border: 1px solid #000;
-  padding: 10px;
   background: #fff;
-  margin: 5px;
+  border: 1px solid $border-color;
+  padding: 10px;
+  margin: 5px 0;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
 }
 </style>
