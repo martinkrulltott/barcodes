@@ -28,3 +28,8 @@ A simple app to generate barcodes with a checksum digit.
 
 * To test that the checksum value is calculcating correctly, run 'npm run test:unit'
 * If the test fails for an unexpected reason, please run 'npx jest --clearCache', because of a Vue CLI bug
+
+## Build & deploy
+
+* To build for production, run 'npm run build'
+* To deploy to Github Pages, run 'sh deploy.sh'

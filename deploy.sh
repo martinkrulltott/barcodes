@@ -4,12 +4,6 @@ set -e
 
 npm run build
 
-cd dist
+git add dist && git commit -m "Deploy"
 
-git init
-git add -A
-git commit -m 'deploy'
-
-git push -f git@github.com:martinkrulltott/barcodes.git master:gh-pages
-
-cd -
+git subtree push --prefix dist origin gh-pages
