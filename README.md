@@ -1,29 +1,25 @@
-# barcodes
+# Barcodes 1.0
 
-## Project setup
-```
-npm install
-```
+A simple app to generate barcodes with a checksum digit.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Requirements
 
-### Compiles and minifies for production
-```
-npm run build
-```
+* Node.js
+* NPM
+* Vue CLI 3
+* Google Chrome
 
-### Run your tests
-```
-npm run test
-```
+## Installation
 
-### Lints and fixes files
-```
-npm run lint
-```
+1. Clone the project(git clone {url})
+2. Go to the project (cd barcodes)
+3. Install the project package (npm i)
+4. Install Vue CLI 3 if required (npm i -g @vue/cli)
+5. Start Vue CLI (vue ui)
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Usage
+
+1. In Vue CLI, go to Tasks -> Serve and click on Run task. Alt run commando 'npm run serve'
+2. When Serve is running, click on Open app or go to http://localhost:8080/
+3. The app is running in the browser, to simulate mobile devices, use "Device Toolbar" in Chrome devtools
+4. The app can also be reached through the network using http://192.168.1.28:8080/
