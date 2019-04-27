@@ -33,11 +33,6 @@
 </template>
 
 <script>
-
-// TODO:
-// Prettier UI :)
-// Responsive for small devices
-
 import Bar from '@/components/Bar.vue';
 import { Compact } from 'vue-color';
 
