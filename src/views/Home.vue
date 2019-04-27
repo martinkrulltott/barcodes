@@ -4,9 +4,12 @@
       <input type="text" placeholder="Barcode number" v-model="barcodeNumber" maxlength="19" />
     </div>
     <div class="barcode">
-      <ul class="bars">
+      <ul class="bars" v-if="barValues && barValues.length > 0">
         <li v-for="value in barValues" class="bar-wrapper">
           <bar :value="value" :color="primaryColor.hex" />
+        </li>
+        <li class="bar-wrapper">
+          <bar :value="checkSumValue" :color="secondaryColor.hex" />
         </li>
       </ul>
     </div>
@@ -30,15 +33,15 @@
 <script>
 
 // TODO:
-// Calculate the checksum
 // Automated tests for the checksum
+// Prettier UI :)
 // Responsive for small devices
 
 import Bar from '@/components/Bar.vue';
 import { Chrome } from 'vue-color';
 
 let primaryColor = { hex: '#194a94' };
-let secondaryColor = { hex: '#ffffff' };
+let secondaryColor = { hex: '#C6D7F1' };
 
 export default {
   name: 'home',
@@ -59,7 +62,24 @@ export default {
     barValues() {
       return this.barcodeNumber ? Array.from(this.barcodeNumber.toString()).map(Number) : [];
     },
+    checkSumValue() {
+      return this.calculateCheckSumValue(this.barcodeNumber);
+    }
   },
+  methods: {
+    calculateCheckSumValue (barcodeNumber) {
+      let result = null;
+      if (barcodeNumber) {
+        const barcodeArray = Array.from(this.barcodeNumber.toString()).map(Number);
+        const oddNumbers = barcodeArray.filter((element, index, array) => index % 2 === 0).reduce((a,b) => a + b, 0) * 3;
+        const evenNumbers = barcodeArray.filter((element, index, array) => index % 2 != 0).reduce((a,b) => a + b, 0);
+        const addedResult = oddNumbers + evenNumbers;
+        const remainderAfterDivision = addedResult % 10;
+        result = remainderAfterDivision == 0 ? 0 : 10 - remainderAfterDivision;
+      }
+      return result;
+    }
+  }
 };
 </script>
 
