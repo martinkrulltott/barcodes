@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="page-title">Barcode editor</h1>
+    <h1 class="page-title">Barcode creator</h1>
     <div class="section">
       <h2 class="section-title">Barcode number</h2>
       <input type="text" placeholder="Enter number..." :value="barcodeNumber" @keyup="changeBarcodeNumber($event)" maxlength="19" class="barcode-number"/>
