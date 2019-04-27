@@ -33,11 +33,11 @@
 </template>
 
 <script>
-import Bar from '@/components/Bar.vue';
-import { Compact } from 'vue-color';
+import Bar from '@/components/Bar.vue'
+import { Compact } from 'vue-color'
 
-let primaryColor = { hex: '#194a94' };
-let secondaryColor = { hex: '#fff' };
+let primaryColor = { hex: '#194a94' }
+let secondaryColor = { hex: '#fff' }
 
 export default {
   name: 'home',
@@ -51,43 +51,43 @@ export default {
       primaryColor,
       secondaryColor,
       displayPrimaryColorEditor: false,
-      displaySecondaryColorEditor: false,
+      displaySecondaryColorEditor: false
     }
   },
   computed: {
-    barValues() {
-      return this.barcodeNumber ? Array.from(this.barcodeNumber.toString()).map(Number) : [];
+    barValues () {
+      return this.barcodeNumber ? Array.from(this.barcodeNumber.toString()).map(Number) : []
     },
-    checkSumValue() {
-      return this.calculateCheckSumValue(this.barcodeNumber);
+    checkSumValue () {
+      return this.calculateCheckSumValue(this.barcodeNumber)
     }
   },
   methods: {
     calculateCheckSumValue (barcodeNumber) {
-      let result = null;
+      let result = null
       if (barcodeNumber) {
-        const barcodeArray = Array.from(this.barcodeNumber.toString()).map(Number);
-        const oddNumbers = barcodeArray.filter((element, index, array) => index % 2 === 0).reduce((a,b) => a + b, 0) * 3;
-        const evenNumbers = barcodeArray.filter((element, index, array) => index % 2 != 0).reduce((a,b) => a + b, 0);
-        const addedResult = oddNumbers + evenNumbers;
-        const remainderAfterDivision = addedResult % 10;
-        result = remainderAfterDivision == 0 ? 0 : 10 - remainderAfterDivision;
+        const barcodeArray = Array.from(this.barcodeNumber.toString()).map(Number)
+        const oddNumbers = barcodeArray.filter((element, index, array) => index % 2 === 0).reduce((a, b) => a + b, 0) * 3
+        const evenNumbers = barcodeArray.filter((element, index, array) => index % 2 !== 0).reduce((a, b) => a + b, 0)
+        const addedResult = oddNumbers + evenNumbers
+        const remainderAfterDivision = addedResult % 10
+        result = remainderAfterDivision === 0 ? 0 : 10 - remainderAfterDivision
       }
-      return result;
+      return result
     },
     // NOTE: If I would have used type="number" and v-model="barcodeNumber", this wouldn't be necessary.
     // But since I wanted to restrict the input to numerics only while still maintaining max length 19
     // I chose to implement a custom solution (however it doesn't work perfectly with e.g. the ` and ^ characters)
     changeBarcodeNumber (event) {
-      if (isNaN(event.target.value) || event.key == ".") {
-        event.preventDefault();
-        event.target.value = event.target.value.slice(0, event.target.value.length - 1);
+      if (isNaN(event.target.value) || event.key === '.') {
+        event.preventDefault()
+        event.target.value = event.target.value.slice(0, event.target.value.length - 1)
       } else {
-        this.barcodeNumber = event.target.value;
+        this.barcodeNumber = event.target.value
       }
     }
   }
-};
+}
 </script>
 
 <style lang="scss">

@@ -7,8 +7,8 @@
 <script>
 export default {
   name: 'Bar',
-  props: ['value', 'backgroundColor', 'borderColor', 'textColor'],
-};
+  props: ['value', 'backgroundColor', 'borderColor', 'textColor']
+}
 </script>
 
 <style lang="scss">
