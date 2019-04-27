@@ -11,7 +11,7 @@ A simple app to generate barcodes with a checksum digit.
 
 ## Installation
 
-1. Clone the project(git clone {url})
+1. Clone the project (git clone {url})
 2. Go to the project (cd barcodes)
 3. Install the project package (npm i)
 4. Install Vue CLI 3 if required (npm i -g @vue/cli)
