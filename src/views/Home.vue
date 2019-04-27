@@ -109,12 +109,15 @@ $border-color: #4d4d4d;
 
 .barcode-number {
   border: 1px solid $border-color;
+  font-size: 16px;
   padding: 5px;
 }
 
 .bars {
   display: flex;
   align-items: center;
+  min-height: 150px;
+  max-width: 600px;
   border: 1px solid;
   padding: 10px;
 }

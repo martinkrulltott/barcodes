@@ -50,7 +50,7 @@ $widthMultipliers: (
 
 @each $name, $value in $heightMultipliers {
   .bar-#{$name} {
-    height: 0em + ($value * 3) - 0.5em;
+    height: $value * 40 - 12px;
   }
 }
 
