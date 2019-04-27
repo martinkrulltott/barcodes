@@ -33,7 +33,6 @@
 <script>
 
 // TODO:
-// Automated tests for the checksum
 // Prettier UI :)
 // Responsive for small devices
 // Only allow numbers in the barcode input
