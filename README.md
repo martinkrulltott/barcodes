@@ -1,6 +1,7 @@
 # Barcodes 1.0
 
 A simple app to generate barcodes with a checksum digit.
+Demo site: https://martinkrulltott.github.io/barcodes/
 
 ## Requirements
 
