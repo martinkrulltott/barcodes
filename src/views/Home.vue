@@ -92,6 +92,7 @@ export default {
 
 <style lang="scss">
 $border-color: #4d4d4d;
+$element-background: #fff;
 
 .section {
   margin: 30px 0;
@@ -108,7 +109,9 @@ $border-color: #4d4d4d;
 }
 
 .barcode-number {
+  background: $element-background;
   border: 1px solid $border-color;
+  border-radius: 0;
   font-size: 16px;
   padding: 5px;
 }
@@ -123,7 +126,7 @@ $border-color: #4d4d4d;
 }
 
 .button {
-  background: #fff;
+  background: $element-background;
   border: 1px solid $border-color;
   padding: 10px;
   margin: 5px 0;
